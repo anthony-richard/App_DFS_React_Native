@@ -16,24 +16,31 @@ export default function Forecasts(props){
                 temp : Math.round(f.main.temp),
                 icon : f.weather[0].icon,
                 name : format(dt, "EEEE", { locale : fr})
+                
             })
         })
         setForecasts(forecastsData)
     }, [props.data])
 
     return (
-        <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-        >
-        
-            {forecasts.map(f=>(
-                <Weather forecast={f} navigation={props.navigation} />
-            ))}
+        <ScrollView >
+                {forecasts.map(f=>(
+                    <View style={styles.listWeather}>
+                        <Weather forecast={f} navigation={props.navigation} />
+                    </View>
+                ))}
         </ScrollView>
     )
 }
 
+// style
 const styles = StyleSheet.create({
-
-})
+    listWeather: {
+      flex: 1,
+      backgroundColor: '#ccc',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 25,
+    },
+  });
+  

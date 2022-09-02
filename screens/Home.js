@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, Text, View ,ActivityIndicator} from 'react-native';
+import { StyleSheet, Text, View ,ActivityIndicator, Button} from 'react-native';
 import * as Location from 'expo-location';
 import axios from 'axios';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import CurrentWeather from '../components/CurrentWeather';
 
-// import des components fait à la mano 
-import Forecasts from '../components/Forecasts';
 
 
 const API_URL = (lat,lon)=> `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=407165e99deffff1d3b70d3360f1edd0&lang=fr&units=metric`
 
+const Stack = createNativeStackNavigator();
 
 export default function Home({navigation}) {
   // 1- recupération des coordonnées de user
@@ -52,9 +53,12 @@ export default function Home({navigation}) {
   
 // location de la personne après autorisation 
   return (
+      <>
         <View style={styles.container}>
-            <Forecasts data={data} navigation={navigation} />
+            <CurrentWeather data={data}/>
+            <View><Text onPress={()=>{navigation.navigate('Forecast')}}>Lien</Text></View>
         </View>
+      </>
   );
 }
 

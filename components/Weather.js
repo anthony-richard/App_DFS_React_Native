@@ -8,9 +8,9 @@ const getIcon = (icon) => `http://openweathermap.org/img/wn/${icon}@2x.png`
 
 export default function Weather({ forecast,navigation }){
     return(
-        <View style ={styles.container} onStartShouldSetResponder={() => navigation.navigate('Formulaire',{itemData : forecast})}>
+        <View style ={styles.container} onStartShouldSetResponder={() => navigation.navigate('FuturWeather',{itemData : forecast})}>
             <Text>{forecast?.name}</Text>
-            <Text>{forecast?.hour}</Text>
+            <Text>Heure : {forecast?.hour}h</Text>
             <Image
                 source={{uri: getIcon(forecast?.icon) }}
                 style={{width:50, height:50}}
@@ -23,9 +23,8 @@ export default function Weather({ forecast,navigation }){
 
 const styles = StyleSheet.create({
     container : {
-        backgroundColor:"white",
         height:140,
-        width : 75,
+        width : '100%',
         paddingVertical : 6,
         justifyContent : "center",
         alignItems: "center",
