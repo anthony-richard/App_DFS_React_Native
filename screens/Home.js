@@ -56,7 +56,7 @@ export default function Home({navigation}) {
       <>
         <View style={styles.container}>
             <CurrentWeather data={data}/>
-            <View><Text onPress={()=>{navigation.navigate('Forecast')}}>Lien</Text></View>
+            <View><Text style={styles.textLink} onPress={()=>{navigation.navigate('Forecast')}}>Voir le temps pour la semaine</Text></View>
         </View>
       </>
   );
@@ -70,5 +70,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  textLink:{
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop : 20,
+  }
 });
 

@@ -24,8 +24,8 @@ export default function Forecasts(props){
 
     return (
         <ScrollView >
-                {forecasts.map(f=>(
-                    <View style={styles.listWeather}>
+                {forecasts.map((f,index)=>(
+                    <View key={index} style={styles.listWeather}>
                         <Weather forecast={f} navigation={props.navigation} />
                     </View>
                 ))}

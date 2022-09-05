@@ -1,5 +1,5 @@
 import React from "react"
-import {View, Text, StyleSheet, Image, ScrollView,Alert} from "react-native"
+import {View, Text, StyleSheet, Image, ScrollView,Alert, TouchableOpacity} from "react-native"
 // import {useEffect, useState} from 'react';
 // import { format } from "date-fns";
 // import {fr} from 'date-fns/locale'
@@ -8,15 +8,19 @@ const getIcon = (icon) => `http://openweathermap.org/img/wn/${icon}@2x.png`
 
 export default function Weather({ forecast,navigation }){
     return(
-        <View style ={styles.container} onStartShouldSetResponder={() => navigation.navigate('FuturWeather',{itemData : forecast})}>
-            <Text>{forecast?.name}</Text>
-            <Text>Heure : {forecast?.hour}h</Text>
-            <Image
-                source={{uri: getIcon(forecast?.icon) }}
-                style={{width:50, height:50}}
-            />
-            <Text>{forecast?.temp}°C</Text>
-        </View>
+        <TouchableOpacity activeOpacity={0.4} onPress={()=>{
+            navigation.navigate('FuturWeather',forecast)
+            }}>
+            <View style ={styles.container}>
+                <Text>{forecast?.name}</Text>
+                <Text>Heure : {forecast?.hour}h</Text>
+                <Image
+                    source={{uri: getIcon(forecast?.icon) }}
+                    style={{width:50, height:50}}
+                />
+                <Text>{forecast?.temp}°C</Text>
+            </View>
+        </TouchableOpacity>
     )
 
 }

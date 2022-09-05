@@ -4,7 +4,7 @@ import * as Location from 'expo-location';
 import axios from 'axios';
 import Forecasts from '../components/Forecasts';
 
-export default function Forecast(navigation) {
+export default function Forecast({navigation}) {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState(null)
 
